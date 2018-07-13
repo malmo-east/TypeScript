@@ -738,6 +738,10 @@ namespace ts {
             getDiagnosticsProducingTypeChecker,
             getCommonSourceDirectory,
             emit,
+            getDeclarationEmitPath: fileName => {
+                const sf = getSourceFile(fileName);
+                return sf && getDeclarationEmitOutputFilePath(sf, getEmitHost());
+            },
             getCurrentDirectory: () => currentDirectory,
             getNodeCount: () => getDiagnosticsProducingTypeChecker().getNodeCount(),
             getIdentifierCount: () => getDiagnosticsProducingTypeChecker().getIdentifierCount(),
